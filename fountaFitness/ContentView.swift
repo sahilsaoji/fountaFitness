@@ -6,54 +6,65 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    var body: some View {
+        NavigationView {
+            VStack(spacing: 32) {
+                // App tagline
+                Text("The Best Way to Build Habits is Together!")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+
+                Spacer()
+
+                // Action buttons
+                VStack(spacing: 20) {
+                    NavigationLink(destination: JoinGroupView()) {
+                        MainButton(title: "Join / Create a Group", systemImage: "person.3.fill", color: .blue)
+                    }
+
+                    NavigationLink(destination: CreateChallengeView()) {
+                        MainButton(title: "Create a Challenge", systemImage: "flag.fill", color: .green)
+                    }
+
+                    NavigationLink(destination: ConnectAppsView()) {
+                        MainButton(title: "Connect Apps", systemImage: "app.connected.to.app.below.fill", color: .orange)
+                    }
+                }
+
+                Spacer()
+            }
+            .padding()
+            .navigationBarHidden(true)
+        }
+    }
+}
+
+// MARK: - Reusable button style
+struct MainButton: View {
+    let title: String
+    let systemImage: String
+    let color: Color
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-            .toolbar {
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
+        HStack {
+            Image(systemName: systemImage)
+                .font(.title2)
+            Text(title)
+                .font(.headline)
         }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+        .foregroundColor(.white)
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(color)
+        .cornerRadius(16)
+        .shadow(radius: 5)
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

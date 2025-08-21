@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E6C3CE832E468BF2001D532B /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = E6C3CE822E468BF2001D532B /* GoogleSignIn */; };
+		E6C3CE852E468BF2001D532B /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E6C3CE842E468BF2001D532B /* GoogleSignInSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		E6C3CE602E45B215001D532B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6C3CE832E468BF2001D532B /* GoogleSignIn in Frameworks */,
+				E6C3CE852E468BF2001D532B /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = fountaFitness;
 			packageProductDependencies = (
+				E6C3CE822E468BF2001D532B /* GoogleSignIn */,
+				E6C3CE842E468BF2001D532B /* GoogleSignInSwift */,
 			);
 			productName = fountaFitness;
 			productReference = E6C3CE4F2E45B214001D532B /* fountaFitness.app */;
@@ -195,6 +204,10 @@
 			);
 			mainGroup = E6C3CE462E45B214001D532B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E6C3CE7E2E45C2B7001D532B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E6C3CE812E468BF2001D532B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E6C3CE502E45B214001D532B /* Products */;
 			projectDirPath = "";
@@ -408,8 +421,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = project.fountaFitness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -434,8 +450,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = project.fountaFitness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -543,6 +562,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E6C3CE7E2E45C2B7001D532B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.1.0;
+			};
+		};
+		E6C3CE812E468BF2001D532B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E6C3CE822E468BF2001D532B /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6C3CE812E468BF2001D532B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		E6C3CE842E468BF2001D532B /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6C3CE812E468BF2001D532B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E6C3CE472E45B214001D532B /* Project object */;
 }
