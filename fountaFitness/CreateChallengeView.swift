@@ -30,7 +30,7 @@ struct CreateChallengeView: View {
                 }) {
                     HStack {
                         Spacer()
-                        Text("Create Challenge")
+                        Text("Create Challenges")
                             .bold()
                         Spacer()
                     }
